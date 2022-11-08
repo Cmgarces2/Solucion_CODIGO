@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formulario Registro</title>
+  <script type="text/javascript">
+var idList = "_"
+document.getElementById('textbox1').value = idList;
+
+function EnableDisableButton(cb, id) {
+
+if (cb.checked == 1) {
+idList = idList + id + "_"
+document.getElementById('textbox1').value = idList;
+}
+
+if (cb.checked == 0) {
+var v;
+v = "_" + id + "_"
+idList = idList.replace(v, "_");
+document.getElementById('textbox1').value = idList;
+}
+
+if (idList == "_") {
+document.getElementById('button1').disabled = true;
+} else {
+document.getElementById('button1').disabled = false;
+}
+
+}
+
+</script>
+<script type="text/javascript">
+    function showContent() {
+        element = document.getElementById("content");
+        check = document.getElementById("check");
+        if (check.checked) {
+            element.style.display='block';
+        }
+        else {
+            element.style.display='none';
+        }
+    }
+</script>
+</head>
+<body>
+<form>
+  <fieldset>
+    <legend>DIRECCIÓN DE ENVIO</legend>
+    <ul>
+        <ol><label for="nome">Calle Principal:</label><input id="nome" name="nome" type="text" autofocus required></ol>
+        <ol><label for="email">Transversal:</label><input id="email" name="e-mail" type="email" required></ol>
+        <label><input type="checkbox" onclick="javacript:EnableDisableButton(this,1);">Entrega al propietario</label><br>
+        <label><input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()" />Entrega a un tercero</label>
+        <br>
+        <label for="nome">Cantones:</label>
+        <select name="transporte">
+          <option>Quito</option>
+          <option>Guayaquil</option>
+          <option>Cuenca</option>
+        </select><br>
+        <br><input id="textbox1" type="text" name="t3"><br>
+        <br><input id="button1" type="submit" value="ENVIAR DATOS" disabled=""><br>
+</fieldset>
+</form>
+<form>
+  <div id="content" style="display: none;">
+  <fieldset>
+    <legend>INFORMACIÓN CONFIDENCIAL</legend>
+       <label for="nome">Código Postal:</label><br>
+       <br><input id="nome" name="nome" type="text" autofocus required><br/>
+       <label for="mensagem">Referencia de la Dirección:</label><br>
+       <br><textarea id="mensagem" name="msg" cols="30" rows="5" required></textarea><br/>
+       <br><input type="submit" value="Guardar"><br>
+      </div>
+  </fieldset>
+</form>
+</body>
+</html>
